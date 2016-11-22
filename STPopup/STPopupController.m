@@ -275,7 +275,17 @@ static NSMutableSet *_retainedPopupControllers;
     [_retainedPopupControllers addObject:self];
     
     viewController = viewController.tabBarController ? : viewController;
-    [viewController presentViewController:_containerViewController animated:YES completion:completion];
+    UITabBarController *tab =[UIApplication sharedApplication].keyWindow.rootViewController;
+    if([tab isKindOfClass:[tab class]])
+    {
+        [tab presentViewController:_containerViewController animated:YES completion:completion];
+
+    }
+    else
+    {
+        [viewController presentViewController:_containerViewController animated:YES completion:completion];
+
+    }
 }
 
 - (void)dismiss
